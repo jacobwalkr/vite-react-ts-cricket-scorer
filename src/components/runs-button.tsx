@@ -1,5 +1,11 @@
-export default function RunsButton({ runs, }: { runs: number }) {
+export default function RunsButton({
+  value,
+  onAddRuns
+}: {
+  value: number,
+  onAddRuns: (value: number) => void
+}) {
   return (
-    <button>{ runs }</button>
+    <button onClick={() => onAddRuns(value)}>{value}</button>
   )
 }
