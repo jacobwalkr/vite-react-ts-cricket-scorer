@@ -1,6 +1,7 @@
 import RunsPanel from '@/components/runs-panel'
 import Scoreboard from '@/components/scoreboard'
 import { useState } from 'react'
+import '@/App.css'
 
 function App() {
   const [runs, setRuns] = useState(0)
