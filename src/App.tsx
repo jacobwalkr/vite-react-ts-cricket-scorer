@@ -2,6 +2,7 @@ import RunsPanel from '@/components/runs-panel'
 import Scoreboard from '@/components/scoreboard'
 import { useState } from 'react'
 import '@/App.css'
+import BattersPanel from '@/components/batters-panel'
 
 function App() {
   const [runs, setRuns] = useState(0)
@@ -19,6 +20,7 @@ function App() {
     <>
       <Scoreboard runs={runs} wickets={wickets} />
       <RunsPanel addRuns={addRuns} addWicket={addWicket} />
+      <BattersPanel />
     </>
   )
 }
