@@ -8,9 +8,31 @@ import battingSideFixture from '@/constants/fixtures/batting-side-fixture'
 function App() {
   const [runs, setRuns] = useState(0)
   const [wickets, setWickets] = useState(0)
+  const [battingSide, setBattingSide] = useState(battingSideFixture)
+
+  function creditStriker(runsToAdd: number): void {
+    const newOrder = battingSide.battingOrder.map(batter => {
+      if (batter.id === battingSide.batterOnStrike) {
+        return {
+          ...batter,
+          score: batter.score + runsToAdd
+        }
+      }
+      else {
+        return { ...batter }
+      }
+    })
+
+
+    setBattingSide({
+      ...battingSide,
+      battingOrder: newOrder
+    })
+  }
 
   function addRuns(runsToAdd: number): void {
     setRuns(runs + runsToAdd)
+    creditStriker(runsToAdd)
   }
 
   function addWicket(): void {
@@ -24,7 +46,7 @@ function App() {
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 px-2">
         <RunsPanel addRuns={addRuns} addWicket={addWicket} />
-        <BattersPanel side={battingSideFixture} />
+        <BattersPanel side={battingSide} />
       </section>
     </>
   )
