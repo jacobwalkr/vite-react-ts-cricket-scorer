@@ -18,6 +18,7 @@ export default function BatterRow({
         {'hover:bg-sky-300 bg-sky-200 font-bold': batterIn},
         {'hover:bg-sky-100': !batterIn}
       )}
+      key={number}
     >
       <div className="h-full place-content-center flex-none w-[3rem] text-center bg-sky-300/75">{number}</div>
       <div className="h-full content-center px-4 py-2 grow">{batter}</div>

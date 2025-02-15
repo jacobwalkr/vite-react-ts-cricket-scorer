@@ -18,9 +18,13 @@ function App() {
 
   return (
     <>
-      <Scoreboard runs={runs} wickets={wickets} />
-      <RunsPanel addRuns={addRuns} addWicket={addWicket} />
-      <BattersPanel />
+      <section className="flex justify-center mb-5">
+        <Scoreboard runs={runs} wickets={wickets} />
+      </section>
+      <section className="grid grid-cols-1 md:grid-cols-2 px-2">
+        <RunsPanel addRuns={addRuns} addWicket={addWicket} />
+        <BattersPanel />
+      </section>
     </>
   )
 }

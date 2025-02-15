@@ -16,7 +16,7 @@ const batters: [string, boolean][] = [
 
 export default function BattersPanel() {
   return (
-    <ol className="mx-3 mt-5 rounded border-1 border-sky-500">
+    <ol className="display-block mx-3 rounded border-1 border-sky-500">
       {batters.map(([batter, batterIn], index) => (
         <BatterRow number={index + 1} batter={batter} batterIn={batterIn} score={0} />
       ))}

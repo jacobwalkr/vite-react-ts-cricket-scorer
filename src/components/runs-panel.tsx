@@ -9,7 +9,7 @@ export default function RunsPanel({
   addWicket: () => void
 }) {
   return (
-    <div className="m-2">
+    <div className="mb-5 text-center">
       <RunsButton value={1} onAddRuns={addRuns} />
       <RunsButton value={2} onAddRuns={addRuns} />
       <RunsButton value={3} onAddRuns={addRuns} />
