@@ -18,7 +18,7 @@ export default function BattersPanel() {
   return (
     <ol className="display-block mx-3 rounded border-1 border-sky-500">
       {batters.map(([batter, batterIn], index) => (
-        <BatterRow number={index + 1} batter={batter} batterIn={batterIn} score={0} />
+        <BatterRow number={index + 1} batter={batter} batterIn={batterIn} onStrike={index === 0} score={0} />
       ))}
     </ol>
   )
