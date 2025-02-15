@@ -14,9 +14,8 @@ export default function RunsButton({
   return (
     <button
       className={clsx(
-        'w-16 h-16 bg-emerald-400 font-bold text-xl mx-0.5 rounded-[50%]',
-        {'bg-emerald-700 text-white': isBoundary(value)},
-        {'bg-emerald-400': !isBoundary(value)}
+        'w-16 h-16 bg-emerald-400 hover:bg-emerald-500 font-bold text-xl mx-0.5 rounded-[50%]',
+        {'bg-emerald-700 hover:bg-emerald-800 text-white': isBoundary(value)}
       )}
       onClick={() => onAddRuns(value)}
     >

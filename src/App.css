@@ -3,3 +3,7 @@
 body {
   min-width: var(--container-xs);
 }
+
+button:hover {
+  cursor: pointer;
+}
