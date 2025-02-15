@@ -9,15 +9,15 @@ function StrikeBox({ onStrike }: { onStrike: boolean }) {
 }
 
 export default function BatterRow({
-  number,
-  batter,
   batterIn,
+  name,
+  number,
   onStrike,
   score,
 }: {
-  number: number,
-  batter: string,
   batterIn: boolean,
+  name: string,
+  number: number,
   onStrike: boolean,
   score: number
 }) {
@@ -33,7 +33,7 @@ export default function BatterRow({
       {batterIn && (
         <StrikeBox onStrike={onStrike} />
       )}
-      <div className="h-full content-center px-4 py-2 grow">{batter}</div>
+      <div className="h-full content-center px-4 py-2 grow">{name}</div>
       <div
         className={clsx(
           'h-[80%] rounded-[999px] place-content-center px-5 basis-content',

@@ -1,24 +1,21 @@
 import BatterRow from "@/components/batter-row"
+import { BattingSide } from "@/types/batting-side"
 
-const batters: [string, boolean][] = [
-  ['A. Aaronson', true],
-  ['B. Bradford', true],
-  ['C. Catterick', false],
-  ['D. Drury', false],
-  ['E. Emery', false],
-  ['F. Franklin', false],
-  ['G. Graham', false],
-  ['H. Hammersmith', false],
-  ['I. Indira', false],
-  ['J. Jenkins', false],
-  ['K. Kendrick', false]
-]
-
-export default function BattersPanel() {
+export default function BattersPanel({
+  side
+}: {
+  side: BattingSide
+}) {
   return (
     <ol className="display-block mx-3 rounded border-1 border-sky-500">
-      {batters.map(([batter, batterIn], index) => (
-        <BatterRow number={index + 1} batter={batter} batterIn={batterIn} onStrike={index === 0} score={0} />
+      {side.battingOrder.map(({id, name, score, placeInOrder}) => (
+        <BatterRow
+          batterIn={[side.batterOffStrike, side.batterOnStrike].includes(id)}
+          name={name}
+          number={placeInOrder}
+          onStrike={id === side.batterOnStrike}
+          score={score}
+        />
       ))}
     </ol>
   )

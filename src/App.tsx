@@ -3,6 +3,7 @@ import Scoreboard from '@/components/scoreboard'
 import { useState } from 'react'
 import '@/App.css'
 import BattersPanel from '@/components/batters-panel'
+import battingSideFixture from '@/constants/fixtures/batting-side-fixture'
 
 function App() {
   const [runs, setRuns] = useState(0)
@@ -23,7 +24,7 @@ function App() {
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 px-2">
         <RunsPanel addRuns={addRuns} addWicket={addWicket} />
-        <BattersPanel />
+        <BattersPanel side={battingSideFixture} />
       </section>
     </>
   )
