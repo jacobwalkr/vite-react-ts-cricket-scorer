@@ -23,11 +23,19 @@ function App() {
       }
     })
 
-
-    setBattingSide({
-      ...battingSide,
-      battingOrder: newOrder
-    })
+    if (runsToAdd % 2) {
+      setBattingSide({
+        batterOffStrike: battingSide.batterOnStrike,
+        batterOnStrike: battingSide.batterOffStrike,
+        battingOrder: newOrder
+      })
+    }
+    else {
+      setBattingSide({
+        ...battingSide,
+        battingOrder: newOrder
+      })
+    }
   }
 
   function addRuns(runsToAdd: number): void {
