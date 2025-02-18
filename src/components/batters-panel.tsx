@@ -7,7 +7,12 @@ export default function BattersPanel({
   side: BattingSide
 }) {
   return (
-    <ol className="display-block mx-3 rounded border-1 border-sky-500">
+    <div
+      className={`
+        grid grid-cols-[4ch_4ch_1fr] md:grid-cols-[4ch_4ch_1fr] sm:grid-cols-[4ch_4ch_1fr_max-content]
+        lg:grid-cols-[4ch_4ch_1fr_max-content] rounded border-1 border-sky-500
+      `}
+    >
       {side.battingOrder.map(({id, name, score, placeInOrder}) => (
         <BatterRow
           batterIn={[side.batterOffStrike, side.batterOnStrike].includes(id)}
@@ -17,6 +22,6 @@ export default function BattersPanel({
           score={score}
         />
       ))}
-    </ol>
+    </div>
   )
 }

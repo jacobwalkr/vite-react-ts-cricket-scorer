@@ -1,13 +1,5 @@
 import clsx from "clsx"
 
-function StrikeBox({ onStrike }: { onStrike: boolean }) {
-  return (
-    <div className="h-full place-content-center flex-none w-[3rem] text-center bg-sky-300/40">
-      {onStrike && <>&#x27A4;</>}
-    </div>
-  )
-}
-
 export default function BatterRow({
   batterIn,
   name,
@@ -22,26 +14,53 @@ export default function BatterRow({
   score: number
 }) {
   return (
-    <li
-      className={clsx(
-        'display-block h-[2.5rem] pe-1 flex items-center transition-colors border-b-1 last:border-b-0 border-sky-500',
-        {'bg-sky-100 font-bold': batterIn}
-      )}
-      key={number}
-    >
-      <div className="h-full place-content-center flex-none w-[3rem] text-center bg-sky-300/75">{number}</div>
-      {batterIn && (
-        <StrikeBox onStrike={onStrike} />
-      )}
-      <div className="h-full content-center px-4 py-2 grow">{name}</div>
+    <>
       <div
-        className={clsx(
-          'h-[80%] rounded-[999px] place-content-center px-5 basis-content',
-          {'bg-sky-300/40': batterIn}
+        className={
+          clsx('text-center py-2 bg-sky-200 text-sky-700 self-center',
+          {'border-t-1 border-sky-300': number !== 1}
         )}
       >
-        {score}
+        {number}
       </div>
-    </li>
+      {batterIn && (
+        <div
+          className={clsx(
+            'text-center py-2 bg-sky-100 self-center',
+            {'border-t-1 border-sky-300': number !== 1}
+          )}
+        >
+          {onStrike ? <>&#x27A4;</> : <>&nbsp;</>}
+        </div>
+      )}
+      <div
+        className={clsx(
+          'px-2 self-center py-2',
+          {'font-bold': batterIn},
+          {'col-span-2': !batterIn},
+          {'border-t-1 border-sky-300': number !== 1}
+        )}
+      >
+        {name}
+      </div>
+      <div
+        className={clsx(
+          'text-right py-2 self-center col-span-3 sm:col-span-1 md:col-span-3 lg:col-span-1',
+          {'border-t-1 border-sky-300': number !== 1}
+        )}
+      >
+        <span className="text-sm text-gray-700">
+          b. Harmison, c. Donoghue
+        </span>
+        <span
+          className={clsx(
+            'rounded-[999px] px-4 py-1 m-3',
+            {'bg-sky-100': batterIn}
+          )}
+        >
+          {score}
+        </span>
+      </div>
+    </>
   )
 }

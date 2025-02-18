@@ -52,7 +52,7 @@ function App() {
       <section className="flex justify-center mb-5">
         <Scoreboard runs={runs} wickets={wickets} />
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 px-2">
+      <section className="grid gap-6 md:grid-cols-2 px-2">
         <RunsPanel addRuns={addRuns} addWicket={addWicket} />
         <BattersPanel side={battingSide} />
       </section>
