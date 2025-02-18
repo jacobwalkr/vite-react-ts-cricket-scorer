@@ -1,4 +1,4 @@
-export type BattingSide = {
+export interface BattingSide {
   batterOffStrike: string,
   batterOnStrike: string,
   battingOrder: BattingOrder

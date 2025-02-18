@@ -16,6 +16,7 @@ export default function BattersPanel({
       {side.battingOrder.map(({id, name, score, placeInOrder}) => (
         <BatterRow
           batterIn={[side.batterOffStrike, side.batterOnStrike].includes(id)}
+          key={`${placeInOrder.toString()}-${name}`}
           name={name}
           number={placeInOrder}
           onStrike={id === side.batterOnStrike}
