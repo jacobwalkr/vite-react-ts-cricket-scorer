@@ -1,4 +1,4 @@
-import { BattingOrder, BattingSide } from '@/types/batting-side'
+import { Batter, BattingSide } from '@/types/batting-side'
 
 const batterNames: string[] = [
   'A. Aaronson',
@@ -14,17 +14,20 @@ const batterNames: string[] = [
   'K. Kendrick'
 ]
 
-const battingOrder: BattingOrder = batterNames.map((name, index) => ({
-  id: index.toString(),
-  name,
-  score: 0,
-  placeInOrder: index + 1
-}))
+function battingSideFixture(): BattingSide {
+  const battingOrder: Batter[] = batterNames.map((name, index) => ({
+    id: index.toString(),
+    name,
+    placeInOrder: index + 1,
+    out: false,
+    score: 0
+  }))
 
-const battingSideFixture: BattingSide = {
-  batterOffStrike: battingOrder[1].id,
-  batterOnStrike: battingOrder[0].id,
-  battingOrder
+  return {
+    batterOffStrike: battingOrder[1].id,
+    batterOnStrike: battingOrder[0].id,
+    battingOrder
+  }
 }
 
 export default battingSideFixture

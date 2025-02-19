@@ -4,11 +4,12 @@ import { useState } from 'react'
 import '@/App.css'
 import BattersPanel from '@/components/batters-panel'
 import battingSideFixture from '@/constants/fixtures/batting-side-fixture'
+import { Batter } from '@/types/batting-side'
 
 function App() {
   const [runs, setRuns] = useState(0)
   const [wickets, setWickets] = useState(0)
-  const [battingSide, setBattingSide] = useState(battingSideFixture)
+  const [battingSide, setBattingSide] = useState(battingSideFixture())
 
   function creditStriker(runsToAdd: number): void {
     const newOrder = battingSide.battingOrder.map(batter => {
@@ -38,13 +39,61 @@ function App() {
     }
   }
 
+  function resetGame(): void {
+    setRuns(0)
+    setWickets(0)
+    setBattingSide(battingSideFixture())
+  }
+
+  // Assuming for this function that there must be at least one available batter remaining
+  function putBatterOut(): void {
+    const placeOfOutBatter = battingSide.battingOrder.find(
+      batter => batter.id === battingSide.batterOnStrike
+    )?.placeInOrder ?? (() => { throw new Error('batter unavailable!') })()
+
+    let newBatterOnStrike: string | undefined
+    const newOrder: Batter[] = []
+
+    for (const batter of battingSide.battingOrder) {
+      const newBatter = { ...batter }
+
+      if (batter.id === battingSide.batterOnStrike) {
+        newBatter.out = true
+      }
+
+      if (
+        batter.placeInOrder > placeOfOutBatter
+        && !batter.out
+        && newBatterOnStrike === undefined
+        && batter.id !== battingSide.batterOffStrike
+        && batter.id !== battingSide.batterOnStrike
+      ) {
+        newBatterOnStrike = batter.id
+      }
+
+      newOrder.push(newBatter)
+    }
+
+    setBattingSide({
+      batterOffStrike: battingSide.batterOffStrike,
+      batterOnStrike: newBatterOnStrike ?? (() => { throw new Error('batter unavailable!') })(),
+      battingOrder: newOrder
+    })
+  }
+
   function handleRuns(runsToAdd: number): void {
     setRuns(runs + runsToAdd)
     creditStriker(runsToAdd)
   }
 
   function handleWicket(): void {
-    setWickets(wickets + 1)
+    if (wickets >= 9) {
+      resetGame()
+    }
+    else {
+      putBatterOut()
+      setWickets(wickets + 1)
+    }
   }
 
   return (

@@ -14,14 +14,15 @@ export default function BattersPanel({
         rounded border-1 border-sky-500
       `}
     >
-      {side.battingOrder.map(({id, name, score, placeInOrder}) => (
+      {side.battingOrder.map(batter => (
         <BatterRow
-          batterIn={[side.batterOffStrike, side.batterOnStrike].includes(id)}
-          key={`${placeInOrder.toString()}-${name}`}
-          name={name}
-          number={placeInOrder}
-          onStrike={id === side.batterOnStrike}
-          score={score}
+          batterIn={[side.batterOffStrike, side.batterOnStrike].includes(batter.id)}
+          key={`${batter.placeInOrder.toString()}-${batter.name}`}
+          name={batter.name}
+          number={batter.placeInOrder}
+          onStrike={batter.id === side.batterOnStrike}
+          out={batter.out}
+          score={batter.score}
         />
       ))}
     </div>

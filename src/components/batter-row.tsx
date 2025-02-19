@@ -5,12 +5,14 @@ export default function BatterRow({
   name,
   number,
   onStrike,
+  out,
   score,
 }: {
   batterIn: boolean,
   name: string,
   number: number,
   onStrike: boolean,
+  out: boolean,
   score: number
 }) {
   return (
@@ -38,7 +40,8 @@ export default function BatterRow({
           'px-2 self-center py-2',
           {'font-bold': batterIn},
           {'col-span-2': !batterIn},
-          {'border-t-1 border-sky-300': number !== 1}
+          {'border-t-1 border-sky-300': number !== 1},
+          {'line-through': out}
         )}
       >
         {name}
