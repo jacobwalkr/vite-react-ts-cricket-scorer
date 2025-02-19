@@ -1,4 +1,4 @@
-import { BattingOrder, BattingSide } from "@/types/batting-side"
+import { BattingOrder, BattingSide } from '@/types/batting-side'
 
 const batterNames: string[] = [
   'A. Aaronson',

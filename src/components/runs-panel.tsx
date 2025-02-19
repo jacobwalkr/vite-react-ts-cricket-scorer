@@ -1,5 +1,5 @@
-import RunsButton from "@/components/runs-button";
-import WicketButton from "@/components/wicket-button";
+import RunsButton from '@/components/runs-button';
+import WicketButton from '@/components/wicket-button';
 
 export default function ScorePanel({
   onRuns: handleRuns,

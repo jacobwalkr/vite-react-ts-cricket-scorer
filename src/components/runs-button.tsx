@@ -1,7 +1,7 @@
-import clsx from "clsx"
+import clsx from 'clsx'
 
 function isBoundary(value: number): boolean {
-  return value == 4 || value == 6
+  return value === 4 || value === 6
 }
 
 export default function RunsButton({
