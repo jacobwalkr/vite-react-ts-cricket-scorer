@@ -1,12 +1,12 @@
 export default function WicketButton({
-  onFallOfWicket
+  onWicket: handleWicket
 }: {
-  onFallOfWicket: () => void
+  onWicket: () => void
 }) {
   return (
     <button
       className='w-16 h-16 bg-red-400 hover:bg-red-500 font-bold text-white text-xl mx-0.5 rounded-[50%]'
-      onClick={onFallOfWicket}
+      onClick={handleWicket}
     >
       W
     </button>

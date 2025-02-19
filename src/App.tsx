@@ -1,4 +1,4 @@
-import RunsPanel from '@/components/runs-panel'
+import ScorePanel from '@/components/runs-panel'
 import Scoreboard from '@/components/scoreboard'
 import { useState } from 'react'
 import '@/App.css'
@@ -38,12 +38,12 @@ function App() {
     }
   }
 
-  function addRuns(runsToAdd: number): void {
+  function handleRuns(runsToAdd: number): void {
     setRuns(runs + runsToAdd)
     creditStriker(runsToAdd)
   }
 
-  function addWicket(): void {
+  function handleWicket(): void {
     setWickets(wickets + 1)
   }
 
@@ -53,7 +53,7 @@ function App() {
         <Scoreboard runs={runs} wickets={wickets} />
       </section>
       <section className="grid gap-6 md:grid-cols-2 px-2">
-        <RunsPanel addRuns={addRuns} addWicket={addWicket} />
+        <ScorePanel onRuns={handleRuns} onWicket={handleWicket} />
         <BattersPanel side={battingSide} />
       </section>
     </>

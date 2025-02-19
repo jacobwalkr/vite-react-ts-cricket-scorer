@@ -1,22 +1,22 @@
 import RunsButton from "@/components/runs-button";
 import WicketButton from "@/components/wicket-button";
 
-export default function RunsPanel({
-  addRuns,
-  addWicket,
+export default function ScorePanel({
+  onRuns: handleRuns,
+  onWicket: handleWicket,
 }: {
-  addRuns: (runs: number) => void,
-  addWicket: () => void
+  onRuns: (runs: number) => void,
+  onWicket: () => void
 }) {
   return (
     <div className="mb-5 text-center">
-      <RunsButton value={1} onAddRuns={addRuns} />
-      <RunsButton value={2} onAddRuns={addRuns} />
-      <RunsButton value={3} onAddRuns={addRuns} />
-      <RunsButton value={4} onAddRuns={addRuns} />
-      <RunsButton value={5} onAddRuns={addRuns} />
-      <RunsButton value={6} onAddRuns={addRuns} />
-      <WicketButton onFallOfWicket={addWicket} />
+      <RunsButton value={1} onRuns={handleRuns} />
+      <RunsButton value={2} onRuns={handleRuns} />
+      <RunsButton value={3} onRuns={handleRuns} />
+      <RunsButton value={4} onRuns={handleRuns} />
+      <RunsButton value={5} onRuns={handleRuns} />
+      <RunsButton value={6} onRuns={handleRuns} />
+      <WicketButton onWicket={handleWicket} />
     </div>
   )
 }

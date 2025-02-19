@@ -6,10 +6,10 @@ function isBoundary(value: number): boolean {
 
 export default function RunsButton({
   value,
-  onAddRuns
+  onRuns: handleRuns
 }: {
   value: number,
-  onAddRuns: (value: number) => void
+  onRuns: (value: number) => void
 }) {
   return (
     <button
@@ -17,7 +17,7 @@ export default function RunsButton({
         'w-16 h-16 bg-emerald-400 hover:bg-emerald-500 font-bold text-xl mx-0.5 rounded-[50%]',
         {'bg-emerald-700 hover:bg-emerald-800 text-white': isBoundary(value)}
       )}
-      onClick={() => { onAddRuns(value) }}
+      onClick={() => { handleRuns(value) }}
     >
       {value}
     </button>
